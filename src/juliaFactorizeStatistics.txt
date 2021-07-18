@@ -1,0 +1,187 @@
+julia> testfun(1)
+Begin with factor
+Begin Linear
+Printing the norm for AMD/G3_circuit file!
+4.885361174138983e-12
+4.885361174138983e-12
+Printing timings
+ ─────────────────────────────────────────────────────────────────────────────
+                                      Time                   Allocations      
+                              ──────────────────────   ───────────────────────
+       Tot / % measured:           38.9s / 92.4%           5.91GiB / 92.9%    
+
+ Section              ncalls     time   %tot     avg     alloc   %tot      avg
+ ─────────────────────────────────────────────────────────────────────────────
+ LinearResolver            1    17.9s  49.8%   17.9s   2.70GiB  49.1%  2.70GiB
+ Factorization Cost        1    17.6s  49.1%   17.6s   2.74GiB  50.0%  2.74GiB
+ FactoResolver             1    383ms  1.07%   383ms   48.4MiB  0.86%  48.4MiB
+ ─────────────────────────────────────────────────────────────────────────────
+SparseMatrixCSC{Float64, Int64} tipo di A
+SuiteSparse.CHOLMOD.Factor{Float64} tipo di A1
+
+julia> testfun(2)
+Begin with factor
+Begin Linear
+Printing the norm for ND/nd24k file!
+2.4493846413199933e-11
+2.4493846413199933e-11
+Printing timings
+ ─────────────────────────────────────────────────────────────────────────────
+                                      Time                   Allocations      
+                              ──────────────────────   ───────────────────────
+       Tot / % measured:            447s / 98.6%           19.0GiB / 91.8%    
+
+ Section              ncalls     time   %tot     avg     alloc   %tot      avg
+ ─────────────────────────────────────────────────────────────────────────────
+ LinearResolver            1     227s  51.4%    227s   8.80GiB  50.3%  8.80GiB
+ Factorization Cost        1     214s  48.5%    214s   8.68GiB  49.7%  8.68GiB
+ FactoResolver             1    415ms  0.09%   415ms   2.31MiB  0.01%  2.31MiB
+ ─────────────────────────────────────────────────────────────────────────────
+SparseMatrixCSC{Float64, Int64} tipo di A
+SuiteSparse.CHOLMOD.Factor{Float64} tipo di A1
+
+julia> testfun(3)
+Begin with factor
+Begin Linear
+Printing the norm for Mazaheri/bundle_adj file!
+1.121014838003962e-5
+1.121014838003962e-5
+Printing timings
+ ─────────────────────────────────────────────────────────────────────────────
+                                      Time                   Allocations      
+                              ──────────────────────   ───────────────────────
+       Tot / % measured:           10.5s / 45.3%           4.12GiB / 71.5%    
+
+ Section              ncalls     time   %tot     avg     alloc   %tot      avg
+ ─────────────────────────────────────────────────────────────────────────────
+ Factorization Cost        1    2.39s  50.2%   2.39s   1.46GiB  49.7%  1.46GiB
+ LinearResolver            1    2.34s  49.0%   2.34s   1.46GiB  49.4%  1.46GiB
+ FactoResolver             1   39.4ms  0.83%  39.4ms   27.4MiB  0.91%  27.4MiB
+ ─────────────────────────────────────────────────────────────────────────────
+SparseMatrixCSC{Float64, Int64} tipo di A
+SuiteSparse.CHOLMOD.Factor{Float64} tipo di A1
+
+julia> testfun(4)
+\Begin with factor
+Begin Linear
+Printing the norm for Embree/ifiss_mat file!
+2.6381697703613173e-14
+2.6381697703613173e-14
+Printing timings
+ ─────────────────────────────────────────────────────────────────────────────
+                                      Time                   Allocations      
+                              ──────────────────────   ───────────────────────
+       Tot / % measured:           3.73s / 87.2%           1.49GiB / 88.6%    
+
+ Section              ncalls     time   %tot     avg     alloc   %tot      avg
+ ─────────────────────────────────────────────────────────────────────────────
+ LinearResolver            1    1.60s  49.0%   1.60s    675MiB  50.0%   675MiB
+ Factorization Cost        1    1.40s  43.0%   1.40s    669MiB  49.6%   669MiB
+ FactoResolver             1    259ms  7.95%   259ms   5.88MiB  0.44%  5.88MiB
+ ─────────────────────────────────────────────────────────────────────────────
+SparseMatrixCSC{Float64, Int64} tipo di A
+SuiteSparse.UMFPACK.UmfpackLU{Float64, Int64} tipo di A1
+
+julia> testfun(5)
+Begin with factor
+ERROR: ZeroPivotException: factorization encountered one or more zero pivots. Consider switching to a pivoted LU factorization.
+Stacktrace:
+ [1] ldlt!(F::SuiteSparse.CHOLMOD.Factor{Float64}, A::SuiteSparse.CHOLMOD.Sparse{Float64}; shift::Float64, check::Bool)
+   @ SuiteSparse.CHOLMOD /builddir/build/BUILD/julia-1.6.1/build/usr/share/julia/stdlib/v1.6/SuiteSparse/src/cholmod.jl:1472
+ [2] #ldlt!#11
+   @ /builddir/build/BUILD/julia-1.6.1/build/usr/share/julia/stdlib/v1.6/SuiteSparse/src/cholmod.jl:1497 [inlined]
+ [3] ldlt!
+   @ /builddir/build/BUILD/julia-1.6.1/build/usr/share/julia/stdlib/v1.6/SuiteSparse/src/cholmod.jl:1497 [inlined]
+ [4] factorize(A::Hermitian{Float64, SparseMatrixCSC{Float64, Int64}})
+   @ SparseArrays /builddir/build/BUILD/julia-1.6.1/build/usr/share/julia/stdlib/v1.6/SparseArrays/src/linalg.jl:1634
+ [5] factorize(A::SparseMatrixCSC{Float64, Int64})
+   @ SparseArrays /builddir/build/BUILD/julia-1.6.1/build/usr/share/julia/stdlib/v1.6/SparseArrays/src/linalg.jl:1612
+ [6] macro expansion
+   @ ~/code/progetto-calcolo/export/Progetto_1/linuxJulia.jl:35 [inlined]
+ [7] macro expansion
+   @ ~/.julia/packages/TimerOutputs/ZQ0rt/src/TimerOutput.jl:220 [inlined]
+ [8] testfun(x::Int64)
+   @ Main ~/code/progetto-calcolo/export/Progetto_1/linuxJulia.jl:34
+ [9] top-level scope
+   @ REPL[9]:1
+
+Printing the norm for IPSO/TSC_OPF_1047 file!
+1.2005371941927177e-11
+
+Printing timings
+ ─────────────────────────────────────────────────────────────────────────
+                                  Time                   Allocations      
+                          ──────────────────────   ───────────────────────
+     Tot / % measured:         1.80s / 95.1%            762MiB / 92.9%    
+
+ Section          ncalls     time   %tot     avg     alloc   %tot      avg
+ ─────────────────────────────────────────────────────────────────────────
+ LinearResolver        1    1.72s   100%   1.72s    708MiB  100%    708MiB
+ ─────────────────────────────────────────────────────────────────────────
+SparseMatrixCSC{Float64, Int64} tipo di A
+
+
+
+julia> testfun(6)
+^[[3~Begin with factor
+Begin Linear
+Printing the norm for FEMLAB/ns3Da file!
+1.0822909261878116e-15
+1.0822909261878116e-15
+Printing timings
+ ─────────────────────────────────────────────────────────────────────────────
+                                      Time                   Allocations      
+                              ──────────────────────   ───────────────────────
+       Tot / % measured:           3.17s / 92.8%            794MiB / 87.7%    
+
+ Section              ncalls     time   %tot     avg     alloc   %tot      avg
+ ─────────────────────────────────────────────────────────────────────────────
+ LinearResolver            1    1.46s  49.5%   1.46s    348MiB  50.0%   348MiB
+ Factorization Cost        1    1.33s  45.4%   1.33s    347MiB  49.8%   347MiB
+ FactoResolver             1    150ms  5.11%   150ms   1.25MiB  0.18%  1.25MiB
+ ─────────────────────────────────────────────────────────────────────────────
+SparseMatrixCSC{Float64, Int64} tipo di A
+SuiteSparse.UMFPACK.UmfpackLU{Float64, Int64} tipo di A1
+
+julia> testfun(7)
+Begin with factor
+Begin Linear
+Printing the norm for Fluorem/GT01R file!
+4.25767363779486e-15
+4.25767363779486e-15
+Printing timings
+ ─────────────────────────────────────────────────────────────────────────────
+                                      Time                   Allocations      
+                              ──────────────────────   ───────────────────────
+       Tot / % measured:           347ms / 80.4%            159MiB / 84.8%    
+
+ Section              ncalls     time   %tot     avg     alloc   %tot      avg
+ ─────────────────────────────────────────────────────────────────────────────
+ LinearResolver            1    139ms  49.7%   139ms   67.2MiB  50.0%  67.2MiB
+ Factorization Cost        1    113ms  40.6%   113ms   66.7MiB  49.6%  66.7MiB
+ FactoResolver             1   27.1ms  9.72%  27.1ms    499KiB  0.36%   499KiB
+ ─────────────────────────────────────────────────────────────────────────────
+SparseMatrixCSC{Float64, Int64} tipo di A
+SuiteSparse.UMFPACK.UmfpackLU{Float64, Int64} tipo di A1
+
+julia> testfun(8)
+Begin with factor
+	Begin Linear
+Printing the norm for Janna/Hook_1498 file!
+1.2972381239799082e-13
+1.2972381239799082e-13
+Printing timings
+ ─────────────────────────────────────────────────────────────────────────────
+                                      Time                   Allocations      
+                              ──────────────────────   ───────────────────────
+       Tot / % measured:           3078s / 99.5%           58.7GiB / 94.7%    
+
+ Section              ncalls     time   %tot     avg     alloc   %tot      avg
+ ─────────────────────────────────────────────────────────────────────────────
+ LinearResolver            1    1650s  53.9%   1650s   27.8GiB  49.9%  27.8GiB
+ Factorization Cost        1     991s  32.4%    991s   27.8GiB  50.0%  27.8GiB
+ FactoResolver             1     421s  13.8%    421s   45.8MiB  0.08%  45.8MiB
+ ─────────────────────────────────────────────────────────────────────────────
+SparseMatrixCSC{Float64, Int64} tipo di A
+SuiteSparse.CHOLMOD.Factor{Float64} tipo di A1
+

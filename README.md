@@ -1,4 +1,4 @@
-# Comparing "\" operator in Matlab and Julia
+# Comparing "\\" operator in Matlab and Julia
 Statistics and Timing of MLDIVIDE "\" operator in Matlab and Julia.
 
 ## Asset
